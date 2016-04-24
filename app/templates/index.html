@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Rake Implementation</h1>
+<form action="" method="post" name="calc">
+    {{ form.hidden_tag() }}
+    <p>Copy and paste block of text to extract key phrases (bullets, punctuation, special characters no problem)</p>
+    <p>All credit for the algorithm goes to <a href="https://github.com/aneesha/RAKE">RAKE on Github</a></p>
+    <p>{{ form.text(cols="70", rows="20") }}<br></p>
+    <p><input type="submit" value="Get Key Phrases"></p>
+    <b>Key Phrase, Score</b><br>
+    {% if not text %}
+    	<p></p>
+    {% else %}
+    	{% for el in text %}
+    		{{ el[0], el[1] }}<br>
+    	{% endfor %}
+    {% endif %}
+{% endblock %}
